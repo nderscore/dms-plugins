@@ -1,0 +1,12 @@
+{
+  "id": "hyprlandSubmapIndicator",
+  "name": "Hyprland Submap Indicator",
+  "description": "Shows a customizable indicator when a Hyprland submap is active",
+  "version": "1.0.0",
+  "author": "_nderscore",
+  "icon": "layers",
+  "type": "widget",
+  "component": "./HyprlandSubmapIndicator.qml",
+  "settings": "./HyprlandSubmapIndicatorSettings.qml",
+  "permissions": ["settings_read", "settings_write"]
+}
