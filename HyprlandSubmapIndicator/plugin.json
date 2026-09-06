@@ -2,7 +2,7 @@
   "id": "hyprlandSubmapIndicator",
   "name": "Hyprland Submap Indicator",
   "description": "Shows a customizable indicator when a Hyprland submap is active",
-  "version": "1.0.0",
+  "version": "1.0.1",
   "author": "_nderscore",
   "icon": "layers",
   "type": "widget",
