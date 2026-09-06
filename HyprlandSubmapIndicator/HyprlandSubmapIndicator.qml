@@ -124,7 +124,7 @@ PluginComponent {
 
             DankIcon {
                 name: root.currentIcon
-                size: Theme.iconSize
+                size: root.iconSize
                 color: root.currentIconColor
                 visible: root.showIcon
                 anchors.verticalCenter: parent.verticalCenter
@@ -146,7 +146,7 @@ PluginComponent {
 
             DankIcon {
                 name: root.currentIcon
-                size: Theme.iconSize
+                size: root.iconSize
                 color: root.currentIconColor
                 visible: root.showIcon
                 anchors.horizontalCenter: parent.horizontalCenter
