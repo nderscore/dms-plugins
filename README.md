@@ -1,6 +1,6 @@
 # DMS Plugins
 
-My plugins for [DankMaterialShell](https://danklinux.com)
+My plugins for [Dux Modular Shell (DMS)](https://duxlabs.dev)
 
 ---
 

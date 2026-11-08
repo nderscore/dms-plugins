@@ -2,7 +2,7 @@
 
 ![HyprlandSubmapIndicator Screenshot](../assets/HyprlandSubmapIndicator-screenshot.png)
 
-Customizable [Hyprland submap](https://wiki.hypr.land/Configuring/Basics/Binds/#submaps) indicator statusbar widget for [DankMaterialShell](https://danklinux.com)
+Customizable [Hyprland submap](https://wiki.hypr.land/Configuring/Basics/Binds/#submaps) indicator statusbar widget for [Dux Modular Shell](https://duxlabs.dev) (DMS)
 
 ## Table of Contents
 
@@ -21,6 +21,11 @@ Customizable [Hyprland submap](https://wiki.hypr.land/Configuring/Basics/Binds/#
 - **Click to reset** - Optionally click the indicator to reset the submap
 - **Legacy Hyprland support** - Supports both legacy Hyprlang and modern Lua Hyprland configurations.
 
+### Requirements
+
+- Hyprland
+- Dux Modular Shell **2.x or newer** - the last version with DMS 1.x support is [v1.0.1](https://github.com/nderscore/dms-plugins/releases/tag/HyprlandSubmapIndicator-v1.0.1)
+
 ## Install
 
 ### Using Settings
@@ -38,9 +43,9 @@ dms plugins install hyprlandSubmapIndicator
 ### Manually
 
 1. Clone or download this repository.
-2. Copy or symlink the `HyprlandSubmapIndicator` directory into to `~/.config/DankMaterialShell/plugins/`.
+2. Copy or symlink the `HyprlandSubmapIndicator` directory into to `~/.config/dms/plugins/`.
 3. Open **DMS Settings -> Plugins -> Scan for Plugins**.
-4. Enable **Hyprland Submap Indicator** and add it to your Dank Bar layout.
+4. Enable **Hyprland Submap Indicator** and add it to your bar layout.
 
 ## Configuration
 
