@@ -2,8 +2,8 @@ import QtQuick
 import Quickshell
 import Quickshell.Hyprland
 import qs.Common
+import qs.DCommon.Widgets
 import qs.Modules.Plugins
-import qs.Widgets
 
 PluginComponent {
     id: root
@@ -122,7 +122,7 @@ PluginComponent {
         Row {
             spacing: root.pillSpacing
 
-            DankIcon {
+            DIcon {
                 name: root.currentIcon
                 size: root.iconSize
                 color: root.currentIconColor
@@ -144,7 +144,7 @@ PluginComponent {
         Column {
             spacing: root.pillSpacing
 
-            DankIcon {
+            DIcon {
                 name: root.currentIcon
                 size: root.iconSize
                 color: root.currentIconColor
