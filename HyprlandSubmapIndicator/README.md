@@ -14,7 +14,7 @@ Customizable [Hyprland submap](https://wiki.hypr.land/Configuring/Basics/Binds/#
 
 ## Features
 
-- **Self-hiding indicator** - A bar widget that appears automatically when any Hyprland submap is active with a hide/show animation using system settings.
+- **Self-hiding indicator** - A bar widget that appears automatically when any Hyprland submap is active with a hide/show animation using system settings. Or, configure the indicator to be shown persistently.
 - **Customizable icon** - Optionally display an icon next to the label, with a configurable default icon and per-submap overrides.
 - **Customizable label** - Show the submap name with adjustable color and font size. Or hide the label entirely for an icon-only indicator.
 - **Per-submap appearance tweaks** - Override the label text, text color, icon and/or icon color for individual submaps.
@@ -56,6 +56,7 @@ Open **DMS Settings -> Plugins -> Hyprland Submap Indicator** to configure the w
 | Setting | Description | Default |
 |---------|-------------|---------|
 | **Click to reset** | Clicking the indicator dispatches a command to reset the submap. | `true` |
+| **Always show** | Keep the indicator visible even when no submap is active. Idle appearance comes from a *blank submap* entry (see below), or a `layers_clear` fallback icon when no idle icon or label is configured. | `false` |
 
 ### Label appearance
 
@@ -70,7 +71,7 @@ Override the label text and/or color for individual submaps.
 
 | Field | Description |
 |-------|-------------|
-| **Submap** *(required)* | The exact Hyprland submap name to match. |
+| **Submap** | The exact Hyprland submap name to match. Leave blank to configure the idle (no submap) appearance — requires **Always show**. |
 | **Label** *(optional)* | Custom text to display instead of the submap name. Leave blank keep the original name and only assign a color. |
 | **Color** *(optional)* | A custom label color. A hexadecimal color string (e.g., `#F38BA8`, `#F38BA8E0`) or [color name](https://www.w3.org/TR/SVG11/types.html#ColorKeywords). Leave blank to use the default text color. |
 
@@ -88,7 +89,7 @@ Override the icon and/or color for individual submaps.
 
 | Field | Description |
 |-------|-------------|
-| **Submap** *(required)* | The exact Hyprland submap name to match. |
+| **Submap** | The exact Hyprland submap name to match. Leave blank to configure the idle (no submap) appearance — requires **Always show**. |
 | **Icon** *(optional)* | A [Material Icon](https://fonts.google.com/icons) name to display instead of the default. Leave blank to only assign a color. |
 | **Color** *(optional)* | A custom icon color. Hexadecimal color string (e.g., `#F38BA8`, `#F38BA8E0`) or [color name](https://www.w3.org/TR/SVG11/types.html#ColorKeywords). Leave blank to use the default icon color. |
 

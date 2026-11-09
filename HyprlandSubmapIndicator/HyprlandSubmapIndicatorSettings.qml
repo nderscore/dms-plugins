@@ -5,7 +5,35 @@ import qs.Widgets
 import qs.Modules.Plugins
 
 PluginSettings {
+    id: settingsRoot
     pluginId: "hyprlandSubmapIndicator"
+
+    property bool alwaysShowOn: false
+    property bool idleAppearanceMissing: false
+
+    function updateIdleWarning() {
+        settingsRoot.alwaysShowOn = settingsRoot.loadValue("alwaysShow", false) === true
+        const showLabelText = settingsRoot.loadValue("fontSize", "small") !== "none"
+        const idleIcon = (settingsRoot.loadValue("submapIcons", []) || []).find(s => !s.submap)?.icon
+        const idleLabel = (settingsRoot.loadValue("submapLabels", []) || []).find(s => !s.submap)?.label
+        const hasIdleIcon = (idleIcon || "") !== ""
+        const hasIdleLabel = showLabelText && (idleLabel || "") !== ""
+        settingsRoot.idleAppearanceMissing = !hasIdleIcon && !hasIdleLabel
+    }
+
+    Component.onCompleted: Qt.callLater(settingsRoot.updateIdleWarning)
+
+    Connections {
+        target: settingsRoot
+
+        function onSettingChanged() {
+            settingsRoot.updateIdleWarning()
+        }
+
+        function onPluginServiceChanged() {
+            Qt.callLater(settingsRoot.updateIdleWarning)
+        }
+    }
 
     StyledText {
         width: parent.width
@@ -20,6 +48,23 @@ PluginSettings {
         label: "Click to reset"
         description: "Clicking the indicator resets to the default submap"
         defaultValue: true
+    }
+
+    ToggleSetting {
+        settingKey: "alwaysShow"
+        label: "Always show"
+        description: "Keep the indicator visible even when no submap is active"
+        defaultValue: false
+    }
+
+    StyledText {
+        width: parent.width
+        visible: settingsRoot.alwaysShowOn && settingsRoot.idleAppearanceMissing
+        text: "'Always show' is enabled, but no idle appearance is configured. A fallback icon will be shown.\n\n" +
+            "Add an entry below with a blank submap name to assign an idle label and/or icon."
+        font.pixelSize: Theme.fontSizeSmall
+        color: Theme.warning
+        wrapMode: Text.WordWrap
     }
 
     Rectangle {
@@ -61,7 +106,9 @@ PluginSettings {
     ListSettingWithInput {
         settingKey: "submapLabels"
         label: "Submap labels"
-        description: "Assign custom labels and/or text colors to certain submaps"
+        description: settingsRoot.alwaysShowOn
+            ? "Assign custom labels and/or text colors to certain submaps. Leave the submap name blank to configure the idle (no submap) label."
+            : "Assign custom labels and/or text colors to certain submaps."
         defaultValue: []
         fields: [
             {
@@ -69,7 +116,7 @@ PluginSettings {
                 label: "Submap",
                 placeholder: "resize",
                 width: 150,
-                required: true
+                required: false
             },
             {
                 id: "label",
@@ -106,7 +153,7 @@ PluginSettings {
     StringSetting {
         settingKey: "defaultIconName"
         label: "Default icon"
-        description: "Material icon name displayed by default. Leave blank to disable"
+        description: "Material icon name displayed by default when a submap is active. Leave blank to disable"
         defaultValue: ""
     }
 
@@ -145,7 +192,9 @@ PluginSettings {
     ListSettingWithInput {
         settingKey: "submapIcons"
         label: "Submap icons"
-        description: "Assign specific icons and/or icon colors to certain submaps"
+        description: settingsRoot.alwaysShowOn
+            ? "Assign specific icons and/or icon colors to certain submaps. Leave the submap name blank to configure the idle (no submap) appearance."
+            : "Assign specific icons and/or icon colors to certain submaps."
         defaultValue: []
         fields: [
             {
@@ -153,7 +202,7 @@ PluginSettings {
                 label: "Submap",
                 placeholder: "resize",
                 width: 150,
-                required: true
+                required: false
             },
             {
                 id: "icon",
